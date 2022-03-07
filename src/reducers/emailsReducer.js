@@ -1,6 +1,19 @@
 import { changeUnread } from "../actions/types";
 
-const initialState = [
+let initialState = [];
+
+for (let i = 0; i < 5; i++) {
+  initialState.push({
+    id: 100795227 + i,
+    from: `Walutomat ${i} - Onet <mailingi@onet.pl>`,
+    sent_date: "2021-12-13 09:00:02",
+    is_unread: false,
+    subject: "Wymień walutę szybko i tanio",
+    snippet: "Odbierz 50% rabatu na wymianę online",
+  });
+}
+
+const initialState2 = [
   {
     id: 100795229,
     from: "Kalkulator OC/AC - Onet <mailingi@onet.pl>",

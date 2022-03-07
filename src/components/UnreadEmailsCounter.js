@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { useSelector } from "react-redux";
 
 const UnreadEmailsCounter = () => {
@@ -8,4 +7,4 @@ const UnreadEmailsCounter = () => {
   return <h2>Emails unread - {emailsUnreadAmount}</h2>;
 };
 
-export default memo(UnreadEmailsCounter);
+export default UnreadEmailsCounter;
