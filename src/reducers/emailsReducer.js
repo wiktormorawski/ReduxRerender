@@ -47,7 +47,7 @@ const initialState2 = [
     snippet: "fshfsgisr",
   },
 ];
-const emailsReducer = (state = initialState, action) => {
+const emailsReducer = (state = initialState2, action) => {
   switch (action.type) {
     case changeUnread:
       return state.map((item) => {

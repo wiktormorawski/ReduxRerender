@@ -7,22 +7,26 @@ import RenderChunk from "./RenderChunk";
 
 const EmailList = () => {
   // const navigate = useNavigate();
-  const emails = useSelector((state) => state.emails);
-  const renderChunksOfEmails = useCallback((emails, chunkSize) => {
-    const res = [];
-    for (let i = 0; i < emails.length; i += chunkSize) {
-      const chunk = emails.slice(i, i + chunkSize);
-      res.push({ id: i, chunk });
-    }
-    return res.map((emailChunk) => (
-      <RenderChunk key={emailChunk.id} chunk={emailChunk} />
-    ));
-  }, []);
+  const amountOfemails = useSelector((state) => state.emails.length);
+  const arr = new Array(amountOfemails).fill(undefined);
+  // const renderChunksOfEmails = useCallback((emails, chunkSize) => {
+  //   const res = [];
+  //   for (let i = 0; i < emails.length; i += chunkSize) {
+  //     const chunk = emails.slice(i, i + chunkSize);
+  //     res.push({ id: i, chunk });
+  //   }
+  //   return res.map((emailChunk) => (
+  //     <RenderChunk key={emailChunk.id} chunk={emailChunk} />
+  //   ));
+  // }, []);
+
   return (
     <div style={{ backgroundColor: "red" }}>
       <h1>Hello</h1>
       <UnreadEmailsCounter />
-      {renderChunksOfEmails(emails, 2)}
+      {arr.map((_, index) => (
+        <RenderChunk key={index} id={index} />
+      ))}
     </div>
   );
 };
