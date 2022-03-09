@@ -1,14 +1,17 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import UnreadEmailsCounter from "./UnreadEmailsCounter";
 import RenderChunk from "./RenderChunk";
+import useTraceUpdate from "../utils/useTraceTracker";
 
-const EmailList = () => {
-  // const navigate = useNavigate();
+const EmailList = (props) => {
+  useTraceUpdate(props);
+  const navigate = useNavigate();
   const amountOfemails = useSelector((state) => state.emails.length);
   const arr = new Array(amountOfemails).fill(undefined);
+  console.log("Render: EmailList, props", props);
   // const renderChunksOfEmails = useCallback((emails, chunkSize) => {
   //   const res = [];
   //   for (let i = 0; i < emails.length; i += chunkSize) {
@@ -20,14 +23,17 @@ const EmailList = () => {
   //   ));
   // }, []);
 
-  return (
-    <div style={{ backgroundColor: "red" }}>
-      <h1>Hello</h1>
-      <UnreadEmailsCounter />
-      {arr.map((_, index) => (
-        <RenderChunk key={index} id={index} />
-      ))}
-    </div>
+  return useMemo(
+    () => (
+      <div style={{ backgroundColor: "red" }}>
+        <h1>Hello</h1>
+        <UnreadEmailsCounter />
+        {arr.map((_, index) => (
+          <RenderChunk key={index} id={index} navigate={navigate} />
+        ))}
+      </div>
+    ),
+    []
   );
 };
-export default EmailList;
+export default memo(EmailList);

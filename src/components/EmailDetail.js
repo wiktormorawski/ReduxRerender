@@ -32,11 +32,14 @@ const EmailDetail = ({ changeEmailUnreadCheckbox }) => {
         <h3>SNIPPET</h3>
         <h1>{email.snippet}</h1>
 
-        <button onClick={() => navigate("/")}>Go Home</button>
+        <button onClick={() => navigate(-1)}>Go Home</button>
       </div>
     );
   }
-  return <h2>Not found email with that id :(</h2>;
+  if (id) {
+    return <h2>Not found email with that id :(</h2>;
+  }
+  return <></>;
 };
 
 const mapDispatchToProps = (dispatch) => ({

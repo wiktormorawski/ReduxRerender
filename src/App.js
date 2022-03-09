@@ -6,6 +6,8 @@ import "./App.css";
 import EmailList from "./components/EmailList";
 import NotFound from "./components/NotFound";
 import EmailDetail from "./components/EmailDetail";
+import withMemo from "./utils/withMemo";
+import EmailDetailListRenderer from "./components/EmailDetailListRenderer";
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
       <h1>WELCOME TO MY APP</h1>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<EmailList />} />
-          <Route path="/details/:id" element={<EmailDetail />} />
+          <Route exact path="/" element={<EmailDetailListRenderer />} />
+          <Route path="/details/:id" element={<EmailDetailListRenderer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -22,4 +24,4 @@ function App() {
   );
 }
 
-export default memo(App);
+export default withMemo(App, []);

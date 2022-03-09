@@ -1,27 +1,14 @@
-import { memo, useCallback, useRef, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { memo, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { changeEmailUnreadCheckbox } from "../actions";
+import useTraceUpdate from "../utils/useTraceTracker";
 
-function useTraceUpdate(props) {
-  const prev = useRef(props);
-  useEffect(() => {
-    const changedProps = Object.entries(props).reduce((ps, [k, v]) => {
-      if (prev.current[k] !== v) {
-        ps[k] = [prev.current[k], v];
-      }
-      return ps;
-    }, {});
-    if (Object.keys(changedProps).length > 0) {
-      console.log("Changed props:", changedProps);
-    }
-    prev.current = props;
-  });
-}
-
-const Email = ({ data }) => {
+const Email = ({ data, navigate }) => {
   useTraceUpdate(data);
 
   const dispatch = useDispatch();
+
   const handleUnreadChange = useCallback(
     () => dispatch(changeEmailUnreadCheckbox(data.id)),
     []
@@ -41,9 +28,9 @@ const Email = ({ data }) => {
           checked={data.is_unread}
         ></input>
       </h3>
-      {/* <button onClick={() => navigate("/details/" + data.id)}>
-      Go to Details
-    </button> */}
+      <button onClick={() => navigate("/details/" + data.id)}>
+        Go to Details
+      </button>
     </div>
   );
 };
