@@ -2,7 +2,7 @@ import { changeUnread } from "../actions/types";
 
 let initialState = [];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 5000; i++) {
   initialState.push({
     id: 100795227 + i,
     from: `Walutomat ${i} - Onet <mailingi@onet.pl>`,
@@ -47,7 +47,7 @@ const initialState2 = [
     snippet: "fshfsgisr",
   },
 ];
-const emailsReducer = (state = initialState2, action) => {
+const emailsReducer = (state = initialState, action) => {
   switch (action.type) {
     case changeUnread:
       return state.map((item) => {

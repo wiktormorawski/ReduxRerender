@@ -18,7 +18,7 @@ function useTraceUpdate(props) {
   });
 }
 
-const Email = ({ data }) => {
+const Email = ({ data, navigate }) => {
   useTraceUpdate(data);
 
   const dispatch = useDispatch();
@@ -41,9 +41,9 @@ const Email = ({ data }) => {
           checked={data.is_unread}
         ></input>
       </h3>
-      {/* <button onClick={() => navigate("/details/" + data.id)}>
-      Go to Details
-    </button> */}
+      <button onClick={() => navigate("/details/" + data.id)}>
+        Go to Details
+      </button>
     </div>
   );
 };

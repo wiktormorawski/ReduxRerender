@@ -6,7 +6,7 @@ import UnreadEmailsCounter from "./UnreadEmailsCounter";
 import RenderChunk from "./RenderChunk";
 
 const EmailList = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const amountOfemails = useSelector((state) => state.emails.length);
   const arr = new Array(amountOfemails).fill(undefined);
   // const renderChunksOfEmails = useCallback((emails, chunkSize) => {
@@ -25,7 +25,7 @@ const EmailList = () => {
       <h1>Hello</h1>
       <UnreadEmailsCounter />
       {arr.map((_, index) => (
-        <RenderChunk key={index} id={index} />
+        <RenderChunk key={index} id={index} navigate={navigate} />
       ))}
     </div>
   );
