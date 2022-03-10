@@ -5,7 +5,6 @@ import "./App.css";
 
 import EmailList from "./components/EmailList";
 import NotFound from "./components/NotFound";
-import EmailDetail from "./components/EmailDetail";
 import withMemo from "./utils/withMemo";
 import EmailDetailListRenderer from "./components/EmailDetailListRenderer";
 
