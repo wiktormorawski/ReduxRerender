@@ -7,16 +7,7 @@ const EmailDetailListRenderer = () => {
   let { id } = useParams();
   console.log("ID: ", id);
 
-  return (
-    <>
-      <div style={id && { display: "unset" }}>
-        <EmailDetail />
-      </div>
-      <div style={id && { display: "none" }}>
-        <EmailList />
-      </div>
-    </>
-  );
+  return <>{id ? <EmailDetail /> : <EmailList />}</>;
 };
 
 export default memo(EmailDetailListRenderer);
