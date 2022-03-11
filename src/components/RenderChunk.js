@@ -18,8 +18,8 @@ import Email from "./Email";
 //   });
 // }
 
-const RenderChunk = ({ id, navigate }) => {
+const RenderChunk = ({ id }) => {
   const email = useSelector((state) => state.emails[id]);
-  return <Email key={email.id} data={email} navigate={navigate} />;
+  return <Email key={email.id} data={email} />;
 };
 export default memo(RenderChunk);

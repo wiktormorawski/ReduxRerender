@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -8,6 +8,18 @@ import NotFound from "./components/NotFound";
 import EmailDetail from "./components/EmailDetail";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const el = document.querySelector(".loader-container");
+    if (el) {
+      el.remove();
+      setLoading(false);
+    }
+  }, []);
+  if (loading) {
+    return null;
+  }
   return (
     <div className="App">
       <h1>WELCOME TO MY APP</h1>

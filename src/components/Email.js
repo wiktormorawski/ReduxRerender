@@ -1,5 +1,6 @@
 import { memo, useCallback, useRef, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { changeEmailUnreadCheckbox } from "../actions";
 
 function useTraceUpdate(props) {
@@ -18,9 +19,9 @@ function useTraceUpdate(props) {
   });
 }
 
-const Email = ({ data, navigate }) => {
+const Email = ({ data }) => {
   useTraceUpdate(data);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleUnreadChange = useCallback(
     () => dispatch(changeEmailUnreadCheckbox(data.id)),
